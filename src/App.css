@@ -1,3 +1,38 @@
+body{
+  font-family: "Poppins", sans-serif;
+}
+p,li{
+  font-family: "Roboto", sans-serif;
+}
+
+/* animation */
+.fadeIn {
+  opacity: 0;
+  transform: translateY(-50px);
+  transition: opacity .5s ease-in, transform .5s ease-in !important;
+}
+.fadeIn2{
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity .5s ease-in, transform .5s ease-in !important;
+}
+
+.fadeIn.visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+.fadeIn2.visible{
+  opacity: 1;
+  transform: translateX(0);
+
+}
+/* Footer */
+footer{
+  background-color: #009739;
+  padding: 10px;
+  color: white;
+}
+
 .App {
   text-align: center;
 }
