@@ -14,11 +14,13 @@
     flex-wrap: wrap;
     gap: 40px;
 }
+/* AJOUTE */
 .dashboard div{
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    background-color: #fdfdfd;
-    padding: 10px;
     width: 80%;
+    background-color: #fdfdfd;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    /* background-color: red; */
     border-radius: 15px;
     height: 150px;
     transition: .3s ease-in;

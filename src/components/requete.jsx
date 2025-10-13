@@ -136,17 +136,22 @@ const Requete = () => {
 
     }
 
+    function handleDelete(id){
+      const nvListe=requete.filter((value) => value.id!=id )
+      setRequete(nvListe);
+    }
+
   return (
     <div className={s.container}>
       <h1 className={`${s.title} fadeIn`}>Tableau de bord</h1>
       <div className={s.dashboard}>
-        <div className="fadeIn2">
-          <h2>
-            {nbrEnCours}
-            <br />
-            Requete(s) en cours
-          </h2>
-        </div>
+          <div className="fadeIn">
+            <h2>
+              {nbrEnCours}
+              <br />
+              Requete(s) en cours
+            </h2>
+          </div>
         <div className="fadeIn2">
           <h2>
             {nbrArrivé}
@@ -226,7 +231,7 @@ const Requete = () => {
                 <td>Lieu {value.localisation}</td>
                 <td>{value.etat}</td>
                 <td>
-                  <img src="/image/delete.png" alt="icone delete" />
+                  <img src="/image/delete.png" alt="icone delete" onClick={()=>handleDelete(value.id)} />
                 </td>
               </tr>
             );

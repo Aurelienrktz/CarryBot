@@ -27,28 +27,24 @@ function App() {
     <Router>
       <div className="App">
         <Navbar show={show} setShow={setShow} />
-        <div className={s.burger} onClick={() => setShow(!show)}>
-          <div style={{ backgroundColor: show && "white" }}></div>
-          <div style={{ backgroundColor: show && "white" }}></div>
-          <div style={{ backgroundColor: show && "white" }}></div>
+        <div className="header">
+          <div className={s.burger} onClick={() => setShow(!show)}>
+            <div style={{ backgroundColor: show && "white" }}></div>
+            <div style={{ backgroundColor: show && "white" }}></div>
+            <div style={{ backgroundColor: show && "white" }}></div>
+          </div>
+          <img className=" logo fadeIn2" src="/image/LogoSample_ByTailorBrands-removebg-preview.png" alt="logo carryBot" />
         </div>
-        <h1 className="fadeIn2">CarryBot</h1>
         <Routes>
           <Route
             path="/login"
             element={<Login setIsAuthentificated={setIsAuthentificated} />}
           />
+
           <Route path="/signUp" element={<SignUp />} />
           {/* <Route path="/" element={<PrivateRoute><Acceuil /></PrivateRoute>} /> */}
           <Route path="/" element={<Acceuil />} />
-          {/* <Route
-            path="/requete"
-            element={
-              <PrivateRoute>
-                <Requete />
-              </PrivateRoute>
-            }
-          /> */}
+          {/* <Route path="/requete"element={<PrivateRoute><Requete /></PrivateRoute>}/> */}
           <Route path="/requete" element={<Requete />} />
         </Routes>
         <footer>

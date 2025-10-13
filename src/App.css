@@ -4,12 +4,24 @@ body{
 p,li{
   font-family: "Roboto", sans-serif;
 }
+.header{  
+  height: 80px;
+  position: relative;
+}
+.logo{
+  width: 200px;
+  position: absolute;
+  top: -55px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
 
 /* animation */
 .fadeIn {
   opacity: 0;
   transform: translateY(-50px);
-  transition: opacity .5s ease-in, transform .5s ease-in !important;
+  transition: opacity 1s ease-in, transform 1s ease-in ;
 }
 .fadeIn2{
   opacity: 0;
