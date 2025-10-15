@@ -15,7 +15,7 @@
   border-radius: 0px 10px 10px 0px;
   transition: 0.3s ease-in-out;
   /* AJOUTE */
-  left: -100px;
+  left: -200px;
 }
 .burger ,.burger2{
   position: absolute;
@@ -65,7 +65,7 @@
 }
 
 .navbar > div:nth-of-type(2) {
-  height: 80%;
+  height: 60%;
   display: flex;
   justify-content: start;
   align-items: center;
@@ -104,6 +104,26 @@
   right:0;
   margin: auto;
   width: 200px;
+}
+.logout{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap:5px;
+  background-color:#009739;
+  color: white;
+  border: 2px solid white;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+.logout img{
+  width: 25px;
+  height: 25px;
+}
+.logout:hover{
+  transform:scale(1.1)  translateY(-5px);
 }
 
 .navbar2 {
@@ -173,8 +193,5 @@
   }
   .navbar a {
     font-size: 1.6rem;
-  }
-  .navbar > div:nth-of-type(2){
-    height: 100%;
   }
 }

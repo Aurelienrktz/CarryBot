@@ -1,15 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 import s from "../styles/navbar.module.css";
 
-const Navbar = ({ show, setShow }) => {
+const Navbar = ({ setIsAuthentificated, show, setShow }) => {
+
+  const navigate=useNavigate();
+
+  function handleLogOut() {
+    localStorage.removeItem("token")
+    setIsAuthentificated(false);
+    navigate("/login")
+    setShow(!show)
+  }
+
   return (
     <div className={show ? `${s.navbar} ${s.navbar2}` : s.navbar}>
       <div className={`${s.burger2}`} onClick={() => setShow(!show)}>
         <div></div>
         <div></div>
       </div>
-      <div style={{ display: show ? "flex" : "none" }}>
+      <div>
         <div className={s.logo_container}>
           <img
             className={s.logo}
@@ -30,6 +40,10 @@ const Navbar = ({ show, setShow }) => {
           Requete
         </NavLink>
       </div>
+      <button className={s.logout} onClick={handleLogOut} >
+        <img src="/image/logout (1).png" alt="icon logout" />
+        Deconnexion
+      </button>
       <h5>© 2025 CarryBot. ESIIA 3A ISPM </h5>
     </div>
   );

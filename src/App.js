@@ -6,14 +6,16 @@ import {
   Navigate,
   useLocation,
 } from "react-router-dom";
-import Navbar from "./components/navbar";
+import MainLayout from "./layout/mainLayout";
+import AuthLayout from "./layout/authLayout";
 import Acceuil from "./components/acceuil";
 import Requete from "./components/requete";
 import Login from "./components/login";
 import SignUp from "./components/signUp";
 import { useEffect, useState } from "react";
-import s from "./styles/navbar.module.css";
 import Animation from "./components/animation";
+
+
 
 function App() {
   Animation();
@@ -26,30 +28,30 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar show={show} setShow={setShow} />
-        <div className="header">
-          <div className={s.burger} onClick={() => setShow(!show)}>
-            <div style={{ backgroundColor: show && "white" }}></div>
-            <div style={{ backgroundColor: show && "white" }}></div>
-            <div style={{ backgroundColor: show && "white" }}></div>
-          </div>
-          <img className=" logo fadeIn2" src="/image/LogoSample_ByTailorBrands-removebg-preview.png" alt="logo carryBot" />
-        </div>
         <Routes>
-          <Route
-            path="/login"
-            element={<Login setIsAuthentificated={setIsAuthentificated} />}
-          />
+          <Route element={<AuthLayout/>}>
+            <Route
+              path="/login"
+              element={<Login setIsAuthentificated={setIsAuthentificated} />}
+            />
+            <Route path="/signUp" element={<SignUp />} />
+          </Route>
 
-          <Route path="/signUp" element={<SignUp />} />
-          {/* <Route path="/" element={<PrivateRoute><Acceuil /></PrivateRoute>} /> */}
-          <Route path="/" element={<Acceuil />} />
-          {/* <Route path="/requete"element={<PrivateRoute><Requete /></PrivateRoute>}/> */}
-          <Route path="/requete" element={<Requete />} />
+          <Route
+            element={
+              <MainLayout
+                setShow={setShow}
+                show={show}
+                setIsAuthentificated={setIsAuthentificated}
+              />
+            }
+          >
+            {/* <Route path="/" element={<PrivateRoute><Acceuil /></PrivateRoute>} /> */}
+            {/* <Route path="/requete"element={<PrivateRoute><Requete /></PrivateRoute>}/> */}
+            <Route path="/" element={<Acceuil />} />
+            <Route path="/requete" element={<Requete />} />
+          </Route>
         </Routes>
-        <footer>
-          <p className="fadeIn">© 2025 CarryBot . Tous droits réservés.</p>
-        </footer>
       </div>
     </Router>
   );

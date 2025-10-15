@@ -43,40 +43,39 @@ const Login = ({setIsAuthentificated}) => {
   }
 
   return (
-    <div className={s.mainContainer}>
-      <div className={`${s.container} fadeIn2`}>
-        <form onSubmit={handleLogin}>
-          <img src="/image/user.png" alt="icon user" />
-          <h1>Utilisateur Connexion</h1>
-          {error && <p style={{ color: "red" }}>{error}</p>}
+    <div className={`${s.container} fadeIn2`}>
+      <form className={s.formulaire} onSubmit={handleLogin}>
+        <img src="/image/user.png" alt="icon user" />
+        <h1>
+          Connectez-vous et laissez <span>CarryBot</span> vous aider
+        </h1>
+        {error && <p style={{ color: "red" }}>{error}</p>}
 
-          <label htmlFor="email">
-            <input
-              type="text"
-              placeholder="Email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
+        <label htmlFor="email">
+          <input
+            type="text"
+            placeholder="Email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
 
-          <label htmlFor="mdp">
-            <input
-              type="password"
-              placeholder="Mot de passe"
-              id="mdp"
-              value={mdp}
-              onChange={(e) => setMdp(e.target.value)}
-            />
-          </label>
+        <label htmlFor="mdp">
+          <input
+            type="password"
+            placeholder="Mot de passe"
+            id="mdp"
+            value={mdp}
+            onChange={(e) => setMdp(e.target.value)}
+          />
+        </label>
 
-          <button type="submit">Connexion</button>
-        </form>
-
-        <p>
-          Pas encore de compte ? <Link to="/signUp">S'inscrire</Link>
-        </p>
-      </div>
+        <button type="submit">Connexion</button>
+      </form>
+      <p>
+        Pas encore de compte ? <Link to="/signUp">S'inscrire</Link>
+      </p>
     </div>
   );
 };
