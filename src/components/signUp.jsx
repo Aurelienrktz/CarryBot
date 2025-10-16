@@ -48,7 +48,7 @@ const SignUp = () => {
       <div className={`${s.container2} fadeIn2`}>
         <form onSubmit={handleSubmit}>
           <img src="image/add-user.png" alt="icon sign up user" />
-          <h1>Rejoignez <span>CarrBot</span>  et découvrez la livraison intelligente</h1>
+          <h1>Rejoignez <span>CarryBot</span>  et découvrez la livraison intelligente</h1>
 
           {error && <p style={{ color: "red" }}>{error}</p>}
 

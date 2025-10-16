@@ -3,7 +3,7 @@ import { useEffect } from "react";
 const Animation = () => {
   useEffect(() => {
     // Sélectionne tous les éléments fadeIn et fadeIn2
-    const elements = document.querySelectorAll(".fadeIn, .fadeIn2");
+    const elements = document.querySelectorAll(".fadeIn, .fadeIn2, .fadeIn3");
 
     if (!elements.length) return;
 

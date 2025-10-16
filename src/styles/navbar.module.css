@@ -186,6 +186,11 @@
   transform: translateX(-50%) scaleX(1);
 }
 
+.navbar a.active{
+  color: red;
+  background-color: blue;
+}
+
 
 @media (min-width: 768px) {
   .navbar2 {

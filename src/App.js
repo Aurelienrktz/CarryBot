@@ -46,10 +46,10 @@ function App() {
               />
             }
           >
-            {/* <Route path="/" element={<PrivateRoute><Acceuil /></PrivateRoute>} /> */}
-            {/* <Route path="/requete"element={<PrivateRoute><Requete /></PrivateRoute>}/> */}
             <Route path="/" element={<Acceuil />} />
             <Route path="/requete" element={<Requete />} />
+            {/* <Route path="/" element={<PrivateRoute><Acceuil /></PrivateRoute>} /> */}
+            {/* <Route path="/requete"element={<PrivateRoute><Requete /></PrivateRoute>}/> */}
           </Route>
         </Routes>
       </div>

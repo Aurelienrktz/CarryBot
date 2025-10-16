@@ -1,13 +1,30 @@
-import React from "react";
+import React, { useState ,useEffect} from "react";
 
 import { NavLink } from "react-router-dom";
 import "../App.css"
 import s from "../styles/acceuil.module.css";
 import Animation from "./animation";
+import { imgISPM } from "../layout/image";
 
 
 const Acceuil = () => {
-  Animation()
+  const [index,setIndex]=useState(0);
+  const [fade,setFade]=useState(true)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false); // fade out
+      setTimeout(() => {
+        setIndex((prev) => (prev + 1) % imgISPM.length); // changer l'image
+        setFade(true); // fade in
+      }, 500); // durée du fade
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [imgISPM.length]);
+
+  Animation();
+
   return (
     <div className={s.container}>
       <div className={`${s.header} ${s.curvey}`}>
@@ -39,27 +56,64 @@ const Acceuil = () => {
             <h2>2 - L'administrateur valide </h2>
             <p>L'administrateur reçoit la commande et prépare le robot.</p>
           </div>
-          <div className=" fadeIn2">
+          <div className=" fadeIn3">
             <img src="/image/robot.png" alt="" />
             <h2>3 - CarryBot agit </h2>
             <p>
               Le robot se déplace de manière autonome jusqu'à la destination.
             </p>
           </div>
-          <div className=" fadeIn2">
+          <div className=" fadeIn3">
             <img src="/image/fast-delivery.png" alt="" />
             <h2>4 - Livraison réussie </h2>
             <p>L'objet est livré au bon endroit en toute sécurité.</p>
           </div>
         </div>
-        <h1 className={`${s.title} fadeIn`}>A propos</h1>
-        <p className="fadeIn">
-          CarryBot est un robot mobile autonome conçu par des étudiants de
-          l'ISPM. Il permet d'effectuer des livraisons à courte distance, en se
-          déplaçant de façon autonome tout en évitant les obstacles. Notre
-          objectif est de démontrer comment la robotique et le web peuvent
-          collaborer pour automatiser la logistique.
-        </p>
+        <div>
+          <h1 className={`${s.title} fadeIn`}>A propos</h1>
+          <div className={s.apropos}>
+            <div className="fadeIn2">
+              <img
+                id="slideShow"
+                className={fade ? "fade-in" : "fade-out"}
+                src={imgISPM[index]}
+                alt={`Image ISPM ${index + 1}`}
+              />
+
+              <p>
+                L’Institut Supérieur Polytechnique de Madagascar est une grande
+                école d’ingénieurs reconnue pour sa formation axée sur la
+                pratique, l’innovation et la recherche. Située à Antsobolo,
+                Antananarivo, l’ <span>ISPM</span> forme chaque année des
+                étudiants passionnés dans divers domaines tels que
+                l’informatique, la finance, la comptabilité, le tourisme , le
+                génie civil ou encore l’agro-industrie. Grâce à son approche
+                basée sur les projets et l’entrepreneuriat technologique, l’
+                <span> ISPM </span>
+                encourage ses étudiants à concevoir des solutions concrètes pour
+                répondre aux besoins de la société malgache.
+              </p>
+            </div>
+            <div className="fadeIn3">
+              <p>
+                Le projet <span>CarryBot</span> s’inscrit dans cette vision,
+                illustrant la créativité et le savoir-faire des étudiants de la
+                filière ESIIA{" "}
+                <span className={s.filiere}>
+                  (Électronique, Systèmes Informatiques et Intelligence
+                  Artificielle)
+                </span>{" "}
+                . Ce projet académique vise à concevoir une solution
+                intelligente et automatisée pour le transport d’objets,
+                combinant robotique et intelligence artificielle. Il reflète non
+                seulement la maîtrise technique des étudiants, mais aussi leur
+                capacité à imaginer des applications concrètes et innovantes,
+                alliant technologie et praticité.
+              </p>
+              <img src="/image/ispm2.jpg" alt="image ispm antsobolo" />
+            </div>
+          </div>
+        </div>
         <h1 className={`${s.title} fadeIn`}>Avantages</h1>
         <ul>
           <li className="fadeIn">
