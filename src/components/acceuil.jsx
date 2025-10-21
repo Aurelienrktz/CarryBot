@@ -1,15 +1,14 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
 import { NavLink } from "react-router-dom";
-import "../App.css"
+import "../App.css";
 import s from "../styles/acceuil.module.css";
 import Animation from "./animation";
 import { imgISPM } from "../layout/image";
 
-
 const Acceuil = () => {
-  const [index,setIndex]=useState(0);
-  const [fade,setFade]=useState(true)
+  const [index, setIndex] = useState(0);
+  const [fade, setFade] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -80,19 +79,21 @@ const Acceuil = () => {
                 alt={`Image ISPM ${index + 1}`}
               />
 
-              <p>
-                L’Institut Supérieur Polytechnique de Madagascar est une grande
-                école d’ingénieurs reconnue pour sa formation axée sur la
-                pratique, l’innovation et la recherche. Située à Antsobolo,
-                Antananarivo, l’ <span>ISPM</span> forme chaque année des
-                étudiants passionnés dans divers domaines tels que
-                l’informatique, la finance, la comptabilité, le tourisme , le
-                génie civil ou encore l’agro-industrie. Grâce à son approche
-                basée sur les projets et l’entrepreneuriat technologique, l’
-                <span> ISPM </span>
-                encourage ses étudiants à concevoir des solutions concrètes pour
-                répondre aux besoins de la société malgache.
-              </p>
+                
+                <p>
+                  L’Institut Supérieur Polytechnique de Madagascar est une
+                  grande école d’ingénieurs reconnue pour sa formation axée sur
+                  la pratique, l’innovation et la recherche. Située à Antsobolo,
+                  Antananarivo, l’ <span>ISPM</span> forme chaque année des
+                  étudiants passionnés dans divers domaines tels que
+                  l’informatique, la finance, la comptabilité, le tourisme , le
+                  génie civil ou encore l’agro-industrie. Grâce à son approche
+                  basée sur les projets et l’entrepreneuriat technologique, l’
+                  <span> ISPM </span>
+                  encourage ses étudiants à concevoir des solutions concrètes
+                  pour répondre aux besoins de la société malgache.
+                </p>
+
             </div>
             <div className="fadeIn3">
               <p>

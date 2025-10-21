@@ -17,20 +17,56 @@
 /* AJOUTE */
 .dashboard div{
     width: 80%;
-    background-color: #fdfdfd;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     padding: 10px;
-    /* background-color: red; */
     border-radius: 15px;
     height: 150px;
     transition: .3s ease-in;
 }
+
+.dashboard div:nth-child(1){
+    background-color: rgb(236, 233, 233); 
+}
+.dashboard div:nth-child(2){
+    background-color: #FFE0B2; /* orange pastel */
+    color: #E65100;
+}
+.dashboard div:nth-child(3){
+    background-color: #BBDEFB; /* bleu clair */
+    color: #0D47A1;
+}
+
+
+
+
 .dashboard div:hover{
     transform: translateY(-5px);
     box-shadow: 0 0px 10px #2c9956;
 }
 
-.requeteInp{
+/* REQUETE */
+.requette{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+}
+.requette h1{
+    margin: 0 auto;
+}
+.requette button{
+    background-color: #45abff;
+    color: white;
+    margin: 0 auto;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition:  0.2s ease-in-out;
+}
+
+.requeteInp,.requette div{
     background-color: #fdfdfd;
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
     display: flex;
@@ -40,7 +76,7 @@
     padding: 20px;
     border-radius: 20px;
     width: 80%;
-    height: 200px;
+    height: 250px;
     transition: .6s ease-in-out;
 }
 .requeteInp label{
@@ -71,18 +107,26 @@
 }
 
 /* ANIMATION */
-.requeteInp:hover{
+.requeteInp:hover,.requette div:hover{
     transform: scale(1.1);
     box-shadow: 0px 0px 10px #009739;
-    /*  */
-  transform: translateX(0) scale(1.1); /* combine fadeIn + hover scale */
-  box-shadow: 0px 0px 10px #009739;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: translateX(0) scale(1.1); /* combine fadeIn + hover scale */
+    box-shadow: 0px 0px 10px #009739;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.requette div:hover{
+    box-shadow: 0px 0px 10px #45abff;
+
 }
 .requeteInp button:hover{
     background: #15803d;
     transform: translateY(-5px);
 } 
+.requette div button:hover{
+    background-color: #3889ca;
+    transform: translateY(-5px);
+}
+
 
 table{
   width: 100%;
@@ -101,13 +145,12 @@ tr{
   background-color: #f2f2f2;
 }
 
-tr:hover {
+tbody tr:hover {
   background-color: #e6f7ec;
 }
 
 table td img{
     width: 10px;
-    margin: 0 auto;
     display: block;
     border-radius: 5px;
     padding: 5px;
@@ -129,7 +172,10 @@ table td img:hover{
     .dashboard div{
         width: 25%;
     }
-    .requeteInp{
+    .requette{
+        flex-direction: row;
+    }
+    .requeteInp,.requette div{
         width: 30%;
     }
     table{
