@@ -1,0 +1,103 @@
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import s from "../styles/login.module.css";
+import Animation from "./animation";
+
+const SignUp = () => {
+  Animation();
+  const [email, setEmail] = useState("");
+  const [mdp, setMdp] = useState("");
+  const [nom, setNom] = useState("");
+  const [prenom, setPrenom] = useState("");
+  const [error, setError] = useState(null);
+
+  //initialisation du hook useNavigate
+  const navigate = useNavigate();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setError(null);
+    try {
+      await fetch("http://192.168.88.183:8000/api/signup/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nom: nom,
+          prenom: prenom,
+          email: email,
+          mot_de_passe: mdp,
+        }),
+      });
+
+      //Redirection après Inscription reussis
+      navigate("/login")
+    } catch (err) {
+      const msg =
+        err.response?.data?.message ||
+        err.response?.data.error.password[0] ||
+        "Erreur lors de l'inscription";
+      setError(msg);
+    }
+  }
+
+  return (
+    <div className={`${s.container2} fadeIn2`}>
+      <form onSubmit={handleSubmit}>
+        <img src="image/add-user.png" alt="icon sign up user" />
+        <h1>
+          Rejoignez <span>CarryBot</span> et découvrez la livraison intelligente
+        </h1>
+
+        {error && <p style={{ color: "red" }}>{error}</p>}
+
+        <label htmlFor="email">
+          <input
+            type="text"
+            placeholder="Email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+
+        <label htmlFor="nom">
+          <input
+            type="text"
+            placeholder="Nom"
+            id="nom"
+            value={nom}
+            onChange={(e) => setNom(e.target.value)}
+          />
+        </label>
+
+        <label htmlFor="prenom">
+          <input
+            type="text"
+            placeholder="Prénom"
+            id="prenom"
+            value={prenom}
+            onChange={(e) => setPrenom(e.target.value)}
+          />
+        </label>
+
+        <label htmlFor="mdp">
+          <input
+            type="password"
+            placeholder="Mot de passe"
+            id="mdp"
+            value={mdp}
+            onChange={(e) => setMdp(e.target.value)}
+          />
+        </label>
+
+        <button type="submit">Inscription</button>
+      </form>
+
+      <p>
+        Vous avez déjà un compte ? <Link to="/login">Se connecter</Link>
+      </p>
+    </div>
+  );
+};
+
+export default SignUp;
