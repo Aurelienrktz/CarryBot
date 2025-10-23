@@ -6,19 +6,20 @@ import { jwtDecode } from "jwt-decode";
 const Requete = () => {
   Animation();
   const [message, setMessage] = useState("");
-  const [destination, setDestination] = useState("");
+  const [destination, setDestination] = useState(1);
   const [error, setError] = useState(null);
   // NOMBRE DES REQUETE
-  const [nbrEnCours, setNbrEnCours] = useState(0);
-  const [nbrArrivé, setNbrArrivé] = useState(0);
   const [requeteActive, setRequeteActive] = useState({});
+
+  const [colMax] = useState(4);
+  const [rawMax] = useState(3);
 
   const [requete, setRequete] = useState([]);
   const [ip] = useState("192.168.88.183");
 
   const fetchRequetes = async () => {
     const token = localStorage.getItem("access_token");
-    const res = await fetch("http://192.168.88.183:8000/api/requete/liste/", {
+    const res = await fetch("http://" + ip + ":8000/api/requete/liste/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -103,16 +104,13 @@ const Requete = () => {
   async function confirmerRequete(id) {
     const token = localStorage.getItem("access_token");
 
-    const res = await fetch(
-      `http://192.168.88.183:8000/api/requete/${id}/confirmer/`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const res = await fetch(`http://${ip}:8000/api/requete/${id}/confirmer/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     if (res.ok) {
       const data = await res.json();
@@ -124,22 +122,25 @@ const Requete = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
-    if (destination.trim() === "") {
-      setError("Veuillez entrer une destination ");
+    if (Number(destination) < 1 || Number(destination) > rawMax * colMax) {
+      setError(
+        "Veuillez entrer une position valable entre 1 et " + rawMax * colMax
+      );
     } else if (message.trim() == "") {
       setError("Veuillez noter vos livraisons");
     } else {
+      const pos = indexToRowCol(Number(destination), rawMax, colMax);
+      const dest = "(" + pos.row + "," + pos.col + ")";
       const accessToken = localStorage.getItem("access_token");
 
-      await fetch("http://192.168.88.183:8000/api/requete/creer/", {
+      await fetch("http://" + ip + ":8000/api/requete/creer/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
         },
         body: JSON.stringify({
-          destination: destination,
+          destination: dest,
           message: message,
         }),
       });
@@ -149,20 +150,50 @@ const Requete = () => {
     }
   }
 
+  function indexToRowCol(x, n, m, zeroBased = false) {
+    if (!Number.isFinite(x) || !Number.isFinite(n) || !Number.isFinite(m))
+      return null;
+    n = Math.floor(n);
+    m = Math.floor(m);
+    if (n <= 0 || m <= 0) return null;
+
+    const xi = zeroBased ? Math.floor(x) : Math.floor(x) - 1;
+    if (xi < 0 || xi >= n * m) return null;
+    const row = Math.floor(xi / m);
+    const col = xi % m;
+    return { row, col };
+  }
+
+  function rowColToIndex(str, n = rawMax, m = colMax, zeroBased = false) {
+    let [row, col] = str.slice(1, -1).split(",").map(Number);
+
+    if (
+      !Number.isFinite(row) ||
+      !Number.isFinite(col) ||
+      !Number.isFinite(n) ||
+      !Number.isFinite(m)
+    )
+      return null;
+    n = Math.floor(n);
+    m = Math.floor(m);
+    row = Math.floor(row);
+    col = Math.floor(col);
+    if (row < 0 || row >= n || col < 0 || col >= m) return null;
+    const xi = row * m + col;
+    return zeroBased ? xi : xi + 1;
+  }
+
   async function handleDelete(id) {
     const token = localStorage.getItem("access_token");
 
     try {
-      const res = await fetch(
-        `http://192.168.88.183:8000/api/requete/${id}/delete/`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await fetch(`http://${ip}:8000/api/requete/${id}/delete/`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       if (!res.ok) throw new Error("Erreur lors de la suppression");
 
@@ -174,22 +205,40 @@ const Requete = () => {
     }
   }
 
+  function giveDate(dateString) {
+    const date = new Date(dateString);
+    const readable = date.toLocaleString("fr-FR", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+    return readable;
+  }
+
   return (
     <div className={s.container}>
       <h1 className={`${s.title} fadeIn`}>Tableau de bord</h1>
       <div className={s.dashboard}>
         <div className="fadeIn">
           <h2>
-            {requete.filter(r => r.etat === "en_attente").length}
+            {requete.filter((r) => r.etat === "en_attente").length}
             <br />
-            {requete.filter(r => r.etat === "en_attente").length > 1 ? "Requetes en attente" : "Requete en attente" }
+            {requete.filter((r) => r.etat === "en_attente").length > 1
+              ? "Requetes en attente"
+              : "Requete en attente"}
           </h2>
         </div>
         <div className="fadeIn2">
           <h2>
-            {requete.filter(r => r.etat === "confirme").length}
+            {requete.filter((r) => r.etat === "confirme").length}
             <br />
-            {requete.filter(r => r.etat === "confirme").length > 1 ? "Requetes confirmé" : "Requete confirmé" }
+            {requete.filter((r) => r.etat === "confirme").length > 1
+              ? "Requetes confirmé"
+              : "Requete confirmé"}
           </h2>
         </div>
         <div className="fadeIn2">
@@ -224,16 +273,15 @@ const Requete = () => {
           Destination :
           <input
             value={destination}
-            type="text"
+            type="number"
             id="destination"
-            placeholder="(x,y)"
             onChange={(e) => setDestination(e.target.value)}
             required
           />
         </label>
 
         <label htmlFor="message">
-          Message :
+          Objet :
           <input
             value={message}
             type="text"
@@ -252,7 +300,7 @@ const Requete = () => {
             <th>Id</th>
             <th>Message</th>
             <th>Destination</th>
-            <th>Date</th>
+            <th>Date d'envoye</th>
             <th>Etat</th>
             <td>Action</td>
           </tr>
@@ -269,8 +317,8 @@ const Requete = () => {
               >
                 <td>{value.id}</td>
                 <td>{value.message}</td>
-                <td>{value.destination}</td>
-                <td>{value.date}</td>
+                <td>{rowColToIndex(value.destination)}</td>
+                <td>{giveDate(value.date)}</td>
                 <td>{value.etat}</td>
                 {(value.etat === "en_attente" || value.etat === "confirme") && (
                   <td>
