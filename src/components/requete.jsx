@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import s from "../styles/requete.module.css";
 import Animation from "./animation";
-import { jwtDecode } from "jwt-decode";
+// import { jwtDecode } from "jwt-decode";
 
 const Requete = () => {
   Animation();
   const [message, setMessage] = useState("");
   const [destination, setDestination] = useState(1);
   const [error, setError] = useState(null);
-  // NOMBRE DES REQUETE
-  const [requeteActive, setRequeteActive] = useState({});
+  const [error1,setError1]=useState(false);
+  const [error2,setError2]=useState(false);
 
+  const [requeteActive, setRequeteActive] = useState({});
   const [colMax] = useState(4);
   const [rawMax] = useState(3);
 
@@ -33,7 +34,6 @@ const Requete = () => {
     }
 
     const data = await res.json();
-    //console.log("Requêtes de l'utilisateur connecté :", data);
     setRequete(data);
 
     const active = data.find(
@@ -51,16 +51,15 @@ const Requete = () => {
     const token = localStorage.getItem("access_token");
     const decoded = jwtDecode(token);
     const userId = decoded.user_id;
+
     const ws = new WebSocket(`ws://${ip}:8000/ws/requetes/`);
 
     ws.onopen = () => console.log("WebSocket connecté !");
 
     ws.onmessage = (e) => {
       const message = JSON.parse(e.data);
-      //console.log("Message WS reçu :", message);
 
       const { event, data } = message; // correspond au WPF
-      //console.log("WS event reçu :", event, data);
 
       // filtrer uniquement les requêtes de l'utilisateur connecté
       if (event === "delete" || data.utilisateurId == userId) {
@@ -124,15 +123,17 @@ const Requete = () => {
     e.preventDefault();
     if (Number(destination) < 1 || Number(destination) > rawMax * colMax) {
       setError(
-        "Veuillez entrer une position valable entre 1 et " + rawMax * colMax
+        "Veuillez entrer une destination valable entre 1 et " + rawMax * colMax
       );
+      setError2(true)
     } else if (message.trim() == "") {
-      setError("Veuillez noter vos livraisons");
+      setError("Veuillez entrer un objet à livrer");
+      setError1(true)
     } else {
       const pos = indexToRowCol(Number(destination), rawMax, colMax);
       const dest = "(" + pos.row + "," + pos.col + ")";
       const accessToken = localStorage.getItem("access_token");
-
+      
       await fetch("http://" + ip + ":8000/api/requete/creer/", {
         method: "POST",
         headers: {
@@ -144,6 +145,9 @@ const Requete = () => {
           message: message,
         }),
       });
+
+      setError1(false);
+      setError2(false)
       setDestination("");
       setMessage("");
       setError(null);
@@ -223,13 +227,13 @@ const Requete = () => {
     <div className={s.container}>
       <h1 className={`${s.title} fadeIn`}>Tableau de bord</h1>
       <div className={s.dashboard}>
-        <div className="fadeIn">
+        <div className="fadeIn2">
           <h2>
             {requete.filter((r) => r.etat === "en_attente").length}
             <br />
             {requete.filter((r) => r.etat === "en_attente").length > 1
-              ? "Requetes en attente"
-              : "Requete en attente"}
+              ? "Requetes En ttente"
+              : "Requete En attente"}
           </h2>
         </div>
         <div className="fadeIn2">
@@ -237,26 +241,57 @@ const Requete = () => {
             {requete.filter((r) => r.etat === "confirme").length}
             <br />
             {requete.filter((r) => r.etat === "confirme").length > 1
-              ? "Requetes confirmé"
-              : "Requete confirmé"}
+              ? "Requetes Confirmé"
+              : "Requete Confirmé"}
           </h2>
         </div>
         <div className="fadeIn2">
           <h2>
             {requete.length} <br />
-            Requete(s) Totale
+            {requete.length > 1 ? "Requetes Totale" : "Requete Totale"}
           </h2>
         </div>
       </div>
       <h1 className={`${s.title} fadeIn`}>Faire une nouvelle requete</h1>
 
-      {Object.keys(requeteActive).length > 0 && (
+      <div className={s.requette}>
+        <form className={`${s.requeteInp} fadeIn2`} onSubmit={handleSubmit}>
+          <h1>Formulaire</h1>
+          {error && <p style={{ color: "red" }}>{error}</p>}
+
+          <label htmlFor="message">
+            Objet :
+            <input
+              value={message}
+              type="text"
+              id="message"
+              placeholder="Stylo"
+              onChange={(e) => setMessage(e.target.value)}
+              style={{ boxShadow: error1 && "0px 0px 5px red" }}
+            />
+          </label>
+
+          <label htmlFor="destination">
+            Destination :
+            <input
+              value={destination}
+              type="number"
+              id="destination"
+              placeholder="1"
+              min={1}
+              onChange={(e) => setDestination(e.target.value)}
+              required
+              style={{ boxShadow: error2 && "0px 0px 5px red" }}
+            />
+          </label>
+
+          <button type="submit">Envoyer</button>
+        </form>
+        {Object.keys(requeteActive).length > 0 && (
         <div>
-          <h1>Requete active</h1>
-          <p>Id: {requeteActive.id}</p>
-          <p>Message : {requeteActive.message}</p>
+          <h1>Requete en cours</h1>
+          <p>Objet : {requeteActive.message}</p>
           <p>Destination : {requeteActive.destination}</p>
-          <p>Date : {requeteActive.date}</p>
           <p>Etat : {requeteActive.etat}</p>
           {requeteActive.etat == "arriver" && (
             <button onClick={() => confirmerRequete(requeteActive.id)}>
@@ -264,37 +299,11 @@ const Requete = () => {
             </button>
           )}
         </div>
-      )}
-
-      <form className={`${s.requeteInp} fadeIn2`} onSubmit={handleSubmit}>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-
-        <label htmlFor="destination">
-          Destination :
-          <input
-            value={destination}
-            type="number"
-            id="destination"
-            onChange={(e) => setDestination(e.target.value)}
-            required
-          />
-        </label>
-
-        <label htmlFor="message">
-          Objet :
-          <input
-            value={message}
-            type="text"
-            id="message"
-            onChange={(e) => setMessage(e.target.value)}
-          />
-        </label>
-
-        <button type="submit">Envoyer</button>
-      </form>
+        )}
+      </div>
 
       <h1 className={`${s.title} fadeIn`}>Historique</h1>
-      <table className="fadeIn">
+      <table className="fadeIn2">
         <thead>
           <tr>
             <th>Id</th>
@@ -302,7 +311,7 @@ const Requete = () => {
             <th>Destination</th>
             <th>Date d'envoye</th>
             <th>Etat</th>
-            <td>Action</td>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>

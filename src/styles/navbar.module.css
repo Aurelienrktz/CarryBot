@@ -21,7 +21,7 @@
   position: absolute;
   top: 20px;
   left:25px;
-  width: 50px;
+  width: 60px;
   height: 50px;
   margin-bottom: 25px;
   cursor: pointer;
@@ -29,7 +29,7 @@
   z-index: 15;
 }
 .burger div,.burger2 div {
-  width: 120%;
+  width: 100%;
   background-color: #009739;
   height: 4px;
   position: absolute;

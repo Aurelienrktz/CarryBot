@@ -1,7 +1,7 @@
 .header {
-  height: 60vh;
+  height: auto;  /* MODIFIE*/
   position: relative;
-  padding: 0.8rem 0.5rem 2rem 0.5rem;
+  padding: 0.8rem 0.5rem 0rem 0.5rem; /*MODIFIE*/
   display: flex;
   justify-content: start;
   align-items: start;
@@ -10,6 +10,9 @@
   color: white;
   flex-direction: column;
   background: linear-gradient(135deg, #009739, #00b853);
+}
+.header h1,.header h2{
+  margin: 0; /* MODIFIE*/
 }
 .header > div:nth-child(1) {
   flex: 1 1 300px;
@@ -22,15 +25,13 @@
 }
 .header img {
   flex: 1 1 250px;
+  height: auto;
   width: 80%;
   max-width: 300px;
   min-width: 150px;
-  max-width: 300px;
   display: block;
   margin: 0 auto;
   transition: all 0.3s ease;
-
-  /*  */
   animation: float 3s ease-in-out infinite;
 }
 .header h1 {
@@ -49,7 +50,7 @@
 }
 /*  */
 .header div a:hover{
-  transform: scale(1.1) ;
+  transform: scale(1.1);
 }
 /*  */
 .title::before{
@@ -57,7 +58,7 @@
     display: block;
     margin: 20px auto 0px;
     height: 5px;
-    width: 10%;
+    width: 30%;
     background-color: #009739;
     border-radius: 5px;
 }
@@ -84,7 +85,7 @@
   align-items: center;
   background: #fff;
   border-radius: 20px;
-  padding: 0px;
+  padding: 10px;
   gap: 20px;
   box-shadow: 0 10px 25px rgba(0, 151, 57, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -129,6 +130,10 @@
 .apropos .filiere{
   color: #FF7F50;
 }
+.apropos a{
+  font-weight: 600;
+  margin-left: 5px;
+}
 
 /* Comment ça marche */
 .tuto{
@@ -137,6 +142,7 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 40px;
+    padding: 40px;
 }
 .tuto img{
     width: 50px;
@@ -155,6 +161,7 @@ ul{
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
   margin-top: 2rem;
+  padding: 10px;
 }
 ul li{
   background: #f9f9f9;
@@ -194,10 +201,14 @@ ul li:hover{
 }
 @media (min-width: 768px) {
     .header {
-        flex-direction: row; /* Passe en ligne */
-        justify-content: space-between;
-        align-items: center;
-        text-align: start;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      text-align: start;
+      height: 60vh; /*MODIFIE*/
+    }
+    .title::before{
+      width: 10%;
     }
     .tuto div{
       width: 40%;
@@ -205,14 +216,15 @@ ul li:hover{
     .header > div:nth-child(1){
       justify-content: start;
       align-items: start;
+      height: 80%;
     }
-  .apropos div {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 40px;
-    gap: 40px;
-  }
+    .apropos div {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px;
+      gap: 40px;
+    }
 
   /* On alterne le sens pour chaque section */
   .apropos div:nth-child(2) {

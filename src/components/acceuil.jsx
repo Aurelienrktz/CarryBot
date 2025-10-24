@@ -38,6 +38,7 @@ const Acceuil = () => {
           </div>
         </div>
         <img
+          className=" fadeIn2"
           src="/image/people using robots-rafiki (1).png"
           alt="image illustration d'une personne utilisant un robot"
         />
@@ -92,6 +93,7 @@ const Acceuil = () => {
                 <span> ISPM </span>
                 encourage ses étudiants à concevoir des solutions concrètes pour
                 répondre aux besoins de la société malgache.
+                <a target="blank" href="https://web.facebook.com/ISPM2014">En savoir plus</a>
               </p>
             </div>
             <div className="fadeIn3">
