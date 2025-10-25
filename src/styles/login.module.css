@@ -60,8 +60,8 @@
   color: #d3c0ff;
   font-size: 2.7rem;
 }
-.filiere{
-  color:gold;
+.filiere {
+  color: gold;
 }
 
 .textContainer p {
@@ -98,9 +98,10 @@
 .container,
 .container2 {
   width: 80%;
-  height: 75vh;
+  height: auto;
+  min-height: 450px;
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
   background-color: #fff;
   flex-direction: column;
@@ -109,7 +110,6 @@
   margin: 30px auto;
   box-shadow: 0px 0px 15px rgba(0, 151, 57, 0.35);
   z-index: 2;
-  gap: 40px;
 }
 
 .container span,
@@ -117,24 +117,25 @@
   color: #009739;
   font-size: 1.7rem;
 }
-.container img,
-.container2 img {
-  width: 50px;
-  height: 50px;
+.container> img,
+.container2> img {
+  width: 60%;
+  height: auto;
   margin: 0 auto;
-  border-radius: 50%;
+  animation: float2 3s ease-in-out infinite;
 }
 .container h1,
 .container2 h1 {
   font-size: 1rem;
   text-align: center;
+  margin: 0;
 }
 .container form,
 .container2 form {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   height: 80%;
 }
 .container input,
@@ -153,7 +154,7 @@
 .container button,
 .container2 button {
   width: 100px;
-  margin: 0 auto;
+  margin: 10px auto;
   padding: 7px;
   border-radius: 5px;
   border: none;
@@ -163,7 +164,8 @@
   transition: 0.3s ease-in-out;
 }
 /* ANIMATION */
-.container:hover,.container2:hover{
+.container:hover,
+.container2:hover {
   transform: translateY(-5px);
 }
 
@@ -201,15 +203,9 @@ a {
   }
   .container,
   .container2 {
-    justify-content: space-between;
-    gap: 20px;
+    justify-content: start;
     width: 25%;
-    margin: 0 auto;
-  }
-  .container img,
-  .container2 img {
-    width: 50px;
-    height: 50px;
+    margin: auto;
   }
   .container h1 {
     font-size: 1.3rem;
@@ -226,12 +222,11 @@ a {
     right: -0.1vw;
     top: -0.1vw;
     background-size: 110px 100%;
-    background-position:  100% 50%;
+    background-position: 100% 50%;
     /* transform: rotateX(180deg);  */
     background-image: url('data:image/svg+xml;charset=utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2.17 35.28" preserveAspectRatio="none"><path d="M1.16 0c-.8 3.17.4 7.29.56 10.04C1.89 12.8.25 19.3.42 22.71c.16 3.43.84 4.65.86 7.05.03 2.4-.88 5.52-.88 5.52h1.77V0z" fill="%23f8f8f8"/></svg>');
   }
 }
-
 
 /* ANIMATION */
 @keyframes float {
@@ -241,5 +236,14 @@ a {
   }
   50% {
     transform: translateY(-10px);
+  }
+}
+@keyframes float2 {
+  0%,
+  100% {
+    transform: scale(1)
+  }
+  50% {
+    transform: scale(1.1);
   }
 }

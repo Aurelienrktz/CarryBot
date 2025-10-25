@@ -1,11 +1,28 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import s from "../styles/login.module.css";
-const AuthLayout = () => {
+const AuthLayout = ({ changeLanguage }) => {
   return (
     <div className={`${s.mainContainer} `}>
       <div className={`${s.about} ${s.curvey}`}>
         <div className={`fadeIn ${s.textContainer}`}>
+          <div className="flag">
+            <img
+              onClick={() => changeLanguage("mlg")}
+              src="/image/madagascar.png"
+              alt="madagascar flag"
+            />
+            <img
+              onClick={() => changeLanguage("fr")}
+              src="/image/france.png"
+              alt="french flag"
+            />
+            <img
+              onClick={() => changeLanguage("en")}
+              src="/image/united-kingdom (1).png"
+              alt="english flag"
+            />
+          </div>
           <h1>
             Bienvenue sur <span>CarryBot</span>
           </h1>
@@ -26,7 +43,6 @@ const AuthLayout = () => {
             alt="illustration"
           />
         </div>
-        {/* 🌊 Vague SVG */}
       </div>
       <Outlet />
     </div>

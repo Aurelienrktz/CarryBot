@@ -1,0 +1,11 @@
+{
+  "auth": {
+    "title": "Welcome to <span>CarryBot</span>",
+    "description": "CarryBot is an academic project developed by students of the Institut Supérieur Polytechnique de Madagascar, in the Electronics, Computer Systems and Artificial Intelligence department<span className={s.filiere}> (ESIIA3A)</span>. <br /> Our goal is to design an intelligent and innovative solution to automate and simplify object transport through robotics."
+  },
+  "login": {
+    "title": "Log in and let <span>CarryBot</span> assist you",
+    "submit": "Login",
+    "link": "Don't have an account yet? <0>Sign up</0>"
+  }
+}

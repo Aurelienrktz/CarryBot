@@ -1,0 +1,11 @@
+{
+  "auth": {
+    "title": "Tongasoa eto amin'ny <span>CarryBot</span>",
+    "description": "CarryBot dia tetikasa akademika novolavolain’ny mpianatra ao amin’ny Institut Supérieur Polytechnique de Madagascar, sampana Electronique, Systèmes Informatiques ary Intelligence Artificielle<span className={s.filiere}> (ESIIA3A)</span>. <br /> Ny tanjonay dia ny mamorona vahaolana manan-tsaina sy manavao hanamorana sy hanatsarana ny fitaterana zavatra amin’ny alalan’ny robotika."
+  },
+  "login": {
+    "title": "Midira ary avelao <span>CarryBot</span> hanampy anao",
+    "submit": "Hiditra",
+    "link": "Tsy mbola manana kaonty ? <0>Hisoratra anarana</0>"
+  }
+}

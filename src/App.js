@@ -16,6 +16,10 @@ import { useEffect, useState } from "react";
 import Animation from "./components/animation";
 import PrivateRoutes from "./components/privateRoute";
 
+import i18next from "./layout/translation";
+import { useTranslation } from "react-i18next";
+import { Trans } from "react-i18next";
+
 
 function App() {
   Animation();
@@ -25,16 +29,31 @@ function App() {
   const PrivateRoute = ({ children }) =>
     isAuthentificated ? children : <Navigate to="/login" replace />;
 
+  // changement de langue
+  const { t } = useTranslation();
+  function changeLanguage(lng) {
+    i18next.changeLanguage(lng);
+  }
+
   return (
     <Router>
       <div className="App">
         <Routes>
-          <Route element={<AuthLayout/>}>
+          <Route element={<AuthLayout changeLanguage={changeLanguage} t={t} />}>
             <Route
               path="/login"
-              element={<Login setIsAuthentificated={setIsAuthentificated} />}
+              element={
+                <Login
+                  changeLanguage={changeLanguage}
+                  t={t}
+                  setIsAuthentificated={setIsAuthentificated}
+                />
+              }
             />
-            <Route path="/signUp" element={<SignUp />} />
+            <Route
+              path="/signUp"
+              element={<SignUp changeLanguage={changeLanguage} t={t} />}
+            />
           </Route>
 
           <Route
@@ -43,11 +62,21 @@ function App() {
                 setShow={setShow}
                 show={show}
                 setIsAuthentificated={setIsAuthentificated}
+                changeLanguage={changeLanguage}
+                t={t}
               />
             }
           >
-            <Route path="/" element={<PrivateRoutes><Acceuil /></PrivateRoutes>} />
-            <Route path="/requete"element={<PrivateRoutes><Requete /></PrivateRoutes>}/>
+            {/* <Route path="/" element={<PrivateRoutes><Acceuil /></PrivateRoutes>} />
+            <Route path="/requete"element={<PrivateRoutes><Requete /></PrivateRoutes>}/> */}
+            <Route
+              path="/"
+              element={<Acceuil changeLanguage={changeLanguage} t={t} />}
+            />
+            <Route
+              path="/requete"
+              element={<Requete changeLanguage={changeLanguage} t={t} />}
+            />
           </Route>
         </Routes>
       </div>

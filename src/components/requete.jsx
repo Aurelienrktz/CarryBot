@@ -288,62 +288,68 @@ const Requete = () => {
           <button type="submit">Envoyer</button>
         </form>
         {Object.keys(requeteActive).length > 0 && (
-        <div>
-          <h1>Requete en cours</h1>
-          <p>Objet : {requeteActive.message}</p>
-          <p>Destination : {requeteActive.destination}</p>
-          <p>Etat : {requeteActive.etat}</p>
-          {requeteActive.etat == "arriver" && (
-            <button onClick={() => confirmerRequete(requeteActive.id)}>
-              Terminer
-            </button>
-          )}
-        </div>
+          <div>
+            <h1>Requete en cours</h1>
+            <p>Objet : {requeteActive.message}</p>
+            <p>Destination : {requeteActive.destination}</p>
+            <p>Etat : {requeteActive.etat}</p>
+            {requeteActive.etat == "arriver" && (
+              <button onClick={() => confirmerRequete(requeteActive.id)}>
+                Terminer
+              </button>
+            )}
+          </div>
         )}
       </div>
 
       <h1 className={`${s.title} fadeIn`}>Historique</h1>
-      <table className="fadeIn2">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Message</th>
-            <th>Destination</th>
-            <th>Date d'envoye</th>
-            <th>Etat</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {requete.map((value, index) => {
-            return (
-              <tr
-                key={index}
-                style={{
-                  backgroundColor: value.etat == "confirme" && "#009739",
-                  color: value.etat == "arriver" && "white",
-                }}
-              >
-                <td>{value.id}</td>
-                <td>{value.message}</td>
-                <td>{rowColToIndex(value.destination)}</td>
-                <td>{giveDate(value.date)}</td>
-                <td>{value.etat}</td>
-                {(value.etat === "en_attente" || value.etat === "confirme") && (
-                  <td>
-                    <img
-                      src="/image/delete.png"
-                      alt="icone delete"
-                      onClick={() => handleDelete(value.id)}
-                    />
-                  </td>
-                )}
-              </tr>
-            );
-          })}
-        </tbody>
-        <tbody></tbody>
-      </table>
+
+      {requete.length === 0 ? (
+        <h2>Aucune requete</h2>
+      ) : (
+        <table className="fadeIn2">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Message</th>
+              <th>Destination</th>
+              <th>Date d'envoye</th>
+              <th>Etat</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {requete.map((value, index) => {
+              return (
+                <tr
+                  key={index}
+                  style={{
+                    backgroundColor: value.etat == "confirme" && "#009739",
+                    color: value.etat == "arriver" && "white",
+                  }}
+                >
+                  <td>{value.id}</td>
+                  <td>{value.message}</td>
+                  <td>{rowColToIndex(value.destination)}</td>
+                  <td>{giveDate(value.date)}</td>
+                  <td>{value.etat}</td>
+                  {(value.etat === "en_attente" ||
+                    value.etat === "confirme") && (
+                    <td>
+                      <img
+                        src="/image/delete.png"
+                        alt="icone delete"
+                        onClick={() => handleDelete(value.id)}
+                      />
+                    </td>
+                  )}
+                </tr>
+              );
+            })}
+          </tbody>
+          <tbody></tbody>
+        </table>
+      )}
     </div>
   );
 };

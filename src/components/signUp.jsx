@@ -10,6 +10,7 @@ const SignUp = () => {
   const [nom, setNom] = useState("");
   const [prenom, setPrenom] = useState("");
   const [error, setError] = useState(null);
+  const [visible,setVisible]=useState(false);
 
   //initialisation du hook useNavigate
   const navigate = useNavigate();
@@ -42,8 +43,8 @@ const SignUp = () => {
 
   return (
     <div className={`${s.container2} fadeIn2`}>
+        <img src="image/Sign up-amico.png" alt="icon sign up user" />
       <form onSubmit={handleSubmit}>
-        <img src="image/add-user.png" alt="icon sign up user" />
         <h1>
           Rejoignez <span>CarryBot</span> et découvrez la livraison intelligente
         </h1>
@@ -80,13 +81,27 @@ const SignUp = () => {
           />
         </label>
 
-        <label htmlFor="mdp">
+        <label htmlFor="mdp" style={{ position: "relative" }}>
           <input
-            type="password"
+            type={visible ? "text" : "password"}
             placeholder="Mot de passe"
             id="mdp"
             value={mdp}
             onChange={(e) => setMdp(e.target.value)}
+          />
+          <img
+            onClick={() => setVisible(!visible)}
+            style={{
+              width: "30px",
+              height: "30px",
+              position: "absolute",
+              right: "20px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              cursor: "pointer",
+              userSelect: "none",
+            }}
+            src={visible ? "/image/hidden.png" : "/image/eye.png"}
           />
         </label>
 

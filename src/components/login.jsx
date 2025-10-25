@@ -5,11 +5,16 @@ import axios from "axios";
 import s from "../styles/login.module.css";
 import Animation from "./animation";
 
-const Login = ({ setIsAuthentificated }) => {
+
+import { useTranslation } from "react-i18next";
+import { Trans } from "react-i18next";
+
+const Login = ({ setIsAuthentificated,t }) => {
   Animation();
   const [email, setEmail] = useState("");
   const [mdp, setMdp] = useState("");
   const [error, setError] = useState(null);
+  const [visible, setVisible] = useState(false);
 
   const navigate = useNavigate();
 
@@ -43,11 +48,12 @@ const Login = ({ setIsAuthentificated }) => {
 
   return (
     <div className={`${s.container} fadeIn2`}>
+
+      <img src="/image/Mobile login-amico.png" alt="icon user" />
       <form className={s.formulaire} onSubmit={handleLogin}>
-        <img src="/image/user.png" alt="icon user" />
-        <h1>
-          Connectez-vous et laissez <span>CarryBot</span> vous aider
-        </h1>
+        {/* <Trans i18nkey> */}
+        <h1 dangerouslySetInnerHTML={{ __html: t("login.title") }} />
+        {/* </Trans> */}
         {error && <p style={{ color: "red" }}>{error}</p>}
 
         <label htmlFor="email">
@@ -60,21 +66,34 @@ const Login = ({ setIsAuthentificated }) => {
           />
         </label>
 
-        <label htmlFor="mdp">
+        <label htmlFor="mdp" style={{ position: "relative" }}>
           <input
-            type="password"
+            type={visible ? "text" : "password"}
             placeholder="Mot de passe"
             id="mdp"
             value={mdp}
             onChange={(e) => setMdp(e.target.value)}
           />
+          <img
+            onClick={() => setVisible(!visible)}
+            style={{
+              width: "30px",
+              height: "30px",
+              position: "absolute",
+              right: "20px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              cursor: "pointer",
+              userSelect: "none",
+            }}
+            src={visible ? "/image/hidden.png" : "/image/eye.png"}
+          />
         </label>
 
-        <button type="submit">Connexion</button>
+        <button type="submit">{t("login.submit")}</button>
       </form>
-      <p>
-        Pas encore de compte ? <Link to="/signUp">S'inscrire</Link>
-      </p>
+      <Trans i18nKey="login.link" components={[<Link to="/signUp" />]}>
+      </Trans>
     </div>
   );
 };

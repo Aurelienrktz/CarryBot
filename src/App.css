@@ -17,6 +17,35 @@ p,li{
   margin: 0 auto;
 }
 
+/* DRAPEAU  */
+.flag,.flag2{
+  display: flex;
+  justify-content:end;
+  align-items: center;
+  gap: 20px;
+}
+.flag{
+  justify-content: start;
+}
+.flag2{
+  height: 100%;
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 5px;
+}
+
+.flag img,.flag2 img{
+  width: 50px;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+
+
+.flag img:hover,.flag2 img:hover{
+  transform: scale(1.1);
+}
+
 /* animation */
 .fadeIn {
   opacity: 0;
@@ -75,6 +104,11 @@ footer{
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+  }
+}
+@media (min-width: 768px) {
+  .flag2{
+    display: flex;
   }
 }
 

@@ -1,0 +1,11 @@
+{
+    "auth":{
+        "title":"Bienvenue sur <span>CarryBot</span>",
+        "description":"CarryBot est un projet académique développé par des étudiants de l'Institut Supérieur Polytechnique de Madagascar, filièreElectronique, Systèmes Informatiques et Intelligence Artificielle<span className={s.filiere}> (ESIIA3A)</span>. <br /> Notre objectif: concevoir une solution intelligente et innovante pour automatiseret simplifier le transport d’objets grâce à la robotique."
+    },
+    "login":{
+        "title":"Connectez-vous et laissez <span>CarryBot</span> vous aider",
+        "submit":"Connexion",
+        "link":"Pas encore de compte ? <0>S'inscrire</0>"
+    }
+}
