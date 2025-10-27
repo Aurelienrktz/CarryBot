@@ -31,8 +31,8 @@ p,li{
   height: 100%;
   display: none;
   position: absolute;
-  top: 0;
   right: 5px;
+  top: 0px;  
 }
 
 .flag img,.flag2 img{
@@ -40,10 +40,31 @@ p,li{
   cursor: pointer;
   transition: .3s ease-in-out;
 }
+.flag img{
+  margin-top: 20px;
+  border-radius: 4px;       /* coins arrondis */
+  /* box-shadow: 0 5px 10px rgba(0,0,0,0.9);  */
+}
+.flag2 img{
+  border: 1px solid #ccc;   /* contour fin */
+  border-radius: 4px;       /* coins arrondis */
+  /* box-shadow: 0 3px 4px rgba(0,0,0,0.3);    */
+}
 
 
 .flag img:hover,.flag2 img:hover{
   transform: scale(1.1);
+}
+
+.active{
+  box-shadow: 0px 0px 5px rgba(0, 151, 57, 0.4);
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+.active2{
+  box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.8);
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
 }
 
 /* animation */

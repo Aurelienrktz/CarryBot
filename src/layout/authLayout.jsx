@@ -1,7 +1,10 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import s from "../styles/login.module.css";
-const AuthLayout = ({ changeLanguage }) => {
+import { Trans } from "react-i18next";
+import i18next from "i18next";
+
+const AuthLayout = ({ t,changeLanguage }) => {
   return (
     <div className={`${s.mainContainer} `}>
       <div className={`${s.about} ${s.curvey}`}>
@@ -9,31 +12,31 @@ const AuthLayout = ({ changeLanguage }) => {
           <div className="flag">
             <img
               onClick={() => changeLanguage("mlg")}
-              src="/image/madagascar.png"
+              src="/image/madagascar(2).png"
               alt="madagascar flag"
+              className={i18next.language === "mlg" ? "active2" : ""}
             />
             <img
               onClick={() => changeLanguage("fr")}
-              src="/image/france.png"
+              src="/image/france(2).png"
               alt="french flag"
+              className={i18next.language === "fr" ? "active2" : ""}
             />
             <img
               onClick={() => changeLanguage("en")}
-              src="/image/united-kingdom (1).png"
+              src="/image/united-kingdom (2).png"
               alt="english flag"
+              className={i18next.language === "en" ? "active2" : ""}
             />
           </div>
-          <h1>
-            Bienvenue sur <span>CarryBot</span>
-          </h1>
+          <h1 dangerouslySetInnerHTML={{ __html: t("auth.title") }} />
           <p>
-            CarryBot est un projet académique développé par des étudiants de
-            l’Institut Supérieur Polytechnique de Madagascar, filière
-            Electronique, Systèmes Informatiques et Intelligence Artificielle
-            <span className={s.filiere}> (ESIIA3A)</span>. <br /> Notre objectif
-            : concevoir une solution intelligente et innovante pour automatiser
-            et simplifier le transport d’objets grâce à la robotique.
+            <Trans
+              i18nKey="auth.description"
+              components={[<span className={s.filiere} />]}
+            />
           </p>
+          <p />
         </div>
         <div className={s.imageContainer}>
           <img

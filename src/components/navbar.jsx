@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { NavLink,useNavigate } from "react-router-dom";
+import { NavLink,useNavigate,Link } from "react-router-dom";
 import s from "../styles/navbar.module.css";
+import { Trans } from "react-i18next";
+import i18next from "i18next";
 
 const Navbar = ({ setIsAuthentificated, show, setShow, t, changeLanguage }) => {
   const navigate = useNavigate();
@@ -26,41 +28,45 @@ const Navbar = ({ setIsAuthentificated, show, setShow, t, changeLanguage }) => {
             alt="logo carryBot"
           />
         </div>
-        <NavLink to="/" onClick={() => setShow(!show)}>
+        <Link to="/" onClick={() => setShow(!show)}>
           <img className={s.icon} src="/image/home.png" alt="icon home" />
-          Acceuil
-        </NavLink>
+          {t("navbar.link1")}
+        </Link>
+
         <NavLink to="/requete" onClick={() => setShow(!show)}>
           <img
             className={s.icon}
             src="/image/request-for-proposal.png"
             alt="icon request"
           />
-          Requete
+          {t("navbar.link2")}
         </NavLink>
       </div>
       <button className={s.logout} onClick={handleLogOut}>
         <img src="/image/logout (1).png" alt="icon logout" />
-        Deconnexion
+        {t("navbar.btn")}
       </button>
-      <h5>© 2025 CarryBot. ESIIA 3A ISPM </h5>
       <div className="flag">
         <img
           onClick={() => changeLanguage("mlg")}
-          src="/image/madagascar.png"
+          src="/image/madagascar(2).png"
           alt="madagascar flag"
+          className={i18next.language === "mlg" ? "active2" : ""}
         />
         <img
           onClick={() => changeLanguage("fr")}
-          src="/image/france.png"
+          src="/image/france(2).png"
           alt="french flag"
+          className={i18next.language === "fr" ? "active2" : ""}
         />
         <img
           onClick={() => changeLanguage("en")}
-          src="/image/united-kingdom (1).png"
+          src="/image/united-kingdom (2).png"
           alt="english flag"
+          className={i18next.language === "en" ? "active2" : ""}
         />
       </div>
+      <h5>© 2025 CarryBot. ESIIA 3A ISPM </h5>
     </div>
   );
 };

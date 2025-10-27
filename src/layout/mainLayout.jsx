@@ -2,8 +2,11 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import s from "../styles/navbar.module.css";
 import Navbar from "../components/navbar";
+import i18next from "i18next";
 
 const MainLayout = ({ setShow, show, setIsAuthentificated,t,changeLanguage }) => {
+
+
 
   return (
     <div>
@@ -28,24 +31,27 @@ const MainLayout = ({ setShow, show, setIsAuthentificated,t,changeLanguage }) =>
         <div className="flag2">
           <img
             onClick={() => changeLanguage("mlg")}
-            src="/image/madagascar.png"
+            src="/image/madagascar(2).png"
             alt="madagascar flag"
+            className={i18next.language === "mlg" ? "active" : ""}
           />
           <img
             onClick={() => changeLanguage("fr")}
-            src="/image/france.png"
+            src="/image/france(2).png"
             alt="french flag"
+            className={i18next.language === "fr" ? "active" : ""}
           />
           <img
             onClick={() => changeLanguage("en")}
-            src="/image/united-kingdom (1).png"
+            src="/image/united-kingdom (2).png"
             alt="english flag"
+            className={i18next.language === "en" ? "active" : ""}
           />
         </div>
       </div>
       <Outlet />
       <footer>
-        <p className="fadeIn">© 2025 CarryBot . Tous droits réservés.</p>
+        <p className="fadeIn">© 2025 CarryBot . {t("footer")}</p>
       </footer>
     </div>
   );

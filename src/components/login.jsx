@@ -51,9 +51,7 @@ const Login = ({ setIsAuthentificated,t }) => {
 
       <img src="/image/Mobile login-amico.png" alt="icon user" />
       <form className={s.formulaire} onSubmit={handleLogin}>
-        {/* <Trans i18nkey> */}
         <h1 dangerouslySetInnerHTML={{ __html: t("login.title") }} />
-        {/* </Trans> */}
         {error && <p style={{ color: "red" }}>{error}</p>}
 
         <label htmlFor="email">
@@ -89,7 +87,6 @@ const Login = ({ setIsAuthentificated,t }) => {
             src={visible ? "/image/hidden.png" : "/image/eye.png"}
           />
         </label>
-
         <button type="submit">{t("login.submit")}</button>
       </form>
       <Trans i18nKey="login.link" components={[<Link to="/signUp" />]}>

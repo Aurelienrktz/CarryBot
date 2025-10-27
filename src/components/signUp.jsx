@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import s from "../styles/login.module.css";
 import Animation from "./animation";
+import { Trans } from "react-i18next";
 
-const SignUp = () => {
+const SignUp = ({t}) => {
   Animation();
   const [email, setEmail] = useState("");
   const [mdp, setMdp] = useState("");
@@ -43,10 +44,10 @@ const SignUp = () => {
 
   return (
     <div className={`${s.container2} fadeIn2`}>
-        <img src="image/Sign up-amico.png" alt="icon sign up user" />
+      <img src="image/Sign up-amico.png" alt="icon sign up user" />
       <form onSubmit={handleSubmit}>
         <h1>
-          Rejoignez <span>CarryBot</span> et découvrez la livraison intelligente
+          <Trans i18nKey={"signUp.title"} components={[<span />]} />
         </h1>
 
         {error && <p style={{ color: "red" }}>{error}</p>}
@@ -105,11 +106,14 @@ const SignUp = () => {
           />
         </label>
 
-        <button type="submit">Inscription</button>
+        <button type="submit">{t("signUp.submit")}</button>
       </form>
 
       <p>
-        Vous avez déjà un compte ? <Link to="/login">Se connecter</Link>
+        <Trans
+          i18nKey={"signUp.link"}
+          components={[<Link to="/login">Se connecter</Link>]}
+        />
       </p>
     </div>
   );

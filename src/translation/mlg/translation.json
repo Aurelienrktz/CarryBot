@@ -1,11 +1,63 @@
 {
   "auth": {
     "title": "Tongasoa eto amin'ny <span>CarryBot</span>",
-    "description": "CarryBot dia tetikasa akademika novolavolain’ny mpianatra ao amin’ny Institut Supérieur Polytechnique de Madagascar, sampana Electronique, Systèmes Informatiques ary Intelligence Artificielle<span className={s.filiere}> (ESIIA3A)</span>. <br /> Ny tanjonay dia ny mamorona vahaolana manan-tsaina sy manavao hanamorana sy hanatsarana ny fitaterana zavatra amin’ny alalan’ny robotika."
+    "description": "CarryBot dia tetikasa akademika novolavolain’ny mpianatra ao amin’ny Institut Supérieur Polytechnique de Madagascar, sampana Electronique, Systèmes Informatiques ary Intelligence Artificielle  <0> (ESIIA3A)</0>. <br /> Ny tanjonay dia ny mamorona vahaolana manan-tsaina sy manavao hanamorana sy hanatsarana ny fitaterana zavatra amin’ny alalan’ny robotika."
   },
   "login": {
     "title": "Midira ary avelao <span>CarryBot</span> hanampy anao",
     "submit": "Hiditra",
     "link": "Tsy mbola manana kaonty ? <0>Hisoratra anarana</0>"
-  }
+  },
+  "signUp": {
+    "title": "Midira ao amin'ny <0>CarryBot</0> ary zahao ny fanaterana manan-tsaina",
+    "submit": "Fisoratana anarana",
+    "link": "Efa manana kaonty ve ianao ? <0>Hiditra</0>"
+  },
+  "acceuil": {
+    "name": "CarryBot",
+    "title": "\" Ilay Robot mpandefa entana manan-tsaina, mahaleo tena ary marina. \"",
+    "link": "Hanao fangatahana",
+    "subTitle1": "Ahoana ny fiasany",
+    "1": "Manafatra ny mpanjifa",
+    "stape1": "Misafidy vokatra sy manoratra ny toerana misy azy ny mpanjifa.",
+    "2": "Manamarina ny administratera",
+    "stape2": "Mandray ny baiko sy manomana ny robot ny administratera.",
+    "3": "Mihetsika i CarryBot",
+    "stape3": "Mandeha ho azy mankany amin’ny toerana alehany ny robot.",
+    "4": "Fandefasana nahomby",
+    "stape4": "Tonga soa aman-tsara amin’ny toerana marina ny entana.",
+    "subTitle2": "Mombamomba",
+    "descriptionISPM": "Ny <0>Institut Supérieur Polytechnique de Madagascar (ISPM)</0> dia sekoly injeniera malaza amin’ny fiofanana miorina amin’ny fampiharana, ny fanavaozana ary ny fikarohana. Ao Antsobolo, Antananarivo, ny <1>ISPM</1> dia mampiofana mpianatra liana amin’ny sehatra maro toy ny informatika, fitantanam-bola, fitantanam-boky, fizahantany, injeniera sivily ary indostria ara-tsakafo. Miaraka amin’ny fomba fianarana miorina amin’ny tetikasa sy ny fandraharahana ara-teknolojika, ny <1>ISPM</1> dia manentana ny mpianatra hamorona vahaolana mivaingana ho an’ny fiaraha-monina Malagasy. <2>Hamaky misimisy kokoa</2>",
+    "descriptionCarryBot": "Ny tetikasa <0>CarryBot</0> dia maneho io vina io, mampiseho ny fahaiza-mamorona sy ny fahaiza-manao ara-teknika an’ny mpianatra ao amin’ny sampana ESIIA <1>(Électronique, Systèmes Informatiques et Intelligence Artificielle)</1>. Tetikasa akademika mikendry ny hamorona vahaolana manan-tsaina sy mandeha ho azy amin’ny fitaterana entana, mampifangaro ny robotika sy ny faharanitan-tsaina artifisialy. Mampiseho izany fa manana fahaiza-manao ara-teknika avo ny mpianatra, ary afaka mamorona fampiharana azo ampiharina sy manavao, mampifandray ny teknolojia sy ny fampiasana.",
+    "subTitle3": "Tombony",
+    "av1": "Fandefasana haingana sy mandeha ho azy.",
+    "av2": "Miala ho azy amin’ny sakana.",
+    "av3": "Fifindra-mandeha marina amin’ny alalan’ny sensor.",
+    "av4": "Tetikasa maitso sy fanabeazana (ISPM).",
+    "av5": "Baiko mora amin’ny alalan’ny tranonkala."
+  },
+  "requete": {
+    "title1": "Tabilao fifehezana",
+    "card1": "Fangatahana miandry",
+    "card2": "Fangatahana voamarina",
+    "card3": "Fangatahana rehetra",
+    "title2": "Manaova fangatahana vaovao",
+    "form": "Taratasy fangatahana",
+    "inp1": "Zavatra halefa",
+    "inp2": "Toerana haleha",
+    "btn1": "Alefa",
+    "aff1": "Fangatahana mandeha",
+    "aff2": "Toetry ny fangatahana",
+    "aff3": "Daty nandefasana",
+    "aff4": "Hetsika",
+    "btn2": "Vita",
+    "title3": "Tantara",
+    "vide": "Tsisy fangatahana"
+  },
+  "navbar": {
+    "link1": "Fandraisana",
+    "link2": "Fangatahana",
+    "btn": "Hiala"
+  },
+  "footer":"Zo rehetra voatahiry."
 }

@@ -3,7 +3,7 @@ import s from "../styles/requete.module.css";
 import Animation from "./animation";
 // import { jwtDecode } from "jwt-decode";
 
-const Requete = () => {
+const Requete = ({t}) => {
   Animation();
   const [message, setMessage] = useState("");
   const [destination, setDestination] = useState(1);
@@ -16,7 +16,7 @@ const Requete = () => {
   const [rawMax] = useState(3);
 
   const [requete, setRequete] = useState([]);
-  const [ip] = useState("192.168.88.183");
+  const ip = "192.168.88.183";
 
   const fetchRequetes = async () => {
     const token = localStorage.getItem("access_token");
@@ -225,42 +225,45 @@ const Requete = () => {
 
   return (
     <div className={s.container}>
-      <h1 className={`${s.title} fadeIn`}>Tableau de bord</h1>
+      <h1 className={`${s.title} fadeIn`}>{t("requete.title1")}</h1>
       <div className={s.dashboard}>
         <div className="fadeIn2">
           <h2>
             {requete.filter((r) => r.etat === "en_attente").length}
             <br />
-            {requete.filter((r) => r.etat === "en_attente").length > 1
+            {t("requete.card1")}
+            {/* {requete.filter((r) => r.etat === "en_attente").length > 1
               ? "Requetes En ttente"
-              : "Requete En attente"}
+              : "Requete(s) En attente"} */}
           </h2>
         </div>
         <div className="fadeIn2">
           <h2>
             {requete.filter((r) => r.etat === "confirme").length}
             <br />
-            {requete.filter((r) => r.etat === "confirme").length > 1
+            {t("requete.card2")}
+            {/* {requete.filter((r) => r.etat === "confirme").length > 1
               ? "Requetes Confirmé"
-              : "Requete Confirmé"}
+              : "Requete Confirmé"} */}
           </h2>
         </div>
         <div className="fadeIn2">
           <h2>
             {requete.length} <br />
-            {requete.length > 1 ? "Requetes Totale" : "Requete Totale"}
+            {t("requete.card3")}
+            {/* {requete.length > 1 ? "Requetes Totale" : "Requete Totale"} */}
           </h2>
         </div>
       </div>
-      <h1 className={`${s.title} fadeIn`}>Faire une nouvelle requete</h1>
+      <h1 className={`${s.title} fadeIn`}> {t("requete.title2")}</h1>
 
       <div className={s.requette}>
         <form className={`${s.requeteInp} fadeIn2`} onSubmit={handleSubmit}>
-          <h1>Formulaire</h1>
+          <h1>{t("requete.form")}</h1>
           {error && <p style={{ color: "red" }}>{error}</p>}
 
           <label htmlFor="message">
-            Objet :
+            {t("requete.inp1")} :
             <input
               value={message}
               type="text"
@@ -272,7 +275,7 @@ const Requete = () => {
           </label>
 
           <label htmlFor="destination">
-            Destination :
+            {t("requete.inp2")} :
             <input
               value={destination}
               type="number"
@@ -285,37 +288,41 @@ const Requete = () => {
             />
           </label>
 
-          <button type="submit">Envoyer</button>
+          <button type="submit">{t("requete.btn1")}</button>
         </form>
         {Object.keys(requeteActive).length > 0 && (
           <div>
-            <h1>Requete en cours</h1>
-            <p>Objet : {requeteActive.message}</p>
-            <p>Destination : {requeteActive.destination}</p>
-            <p>Etat : {requeteActive.etat}</p>
+            <h1>{t("requete.aff1")}</h1>
+            <p>
+              {t("requete.inp1")} : {requeteActive.message}
+            </p>
+            <p>
+              {t("requete.inp2")} : {requeteActive.destination}
+            </p>
+            <p>
+              {t("requete.aff2")} : {requeteActive.etat}
+            </p>
             {requeteActive.etat == "arriver" && (
               <button onClick={() => confirmerRequete(requeteActive.id)}>
-                Terminer
+                {t("requete.btn2")}
               </button>
             )}
           </div>
         )}
       </div>
-
-      <h1 className={`${s.title} fadeIn`}>Historique</h1>
-
+      <h1 className={`${s.title} fadeIn`}>{t("requete.title3")}</h1>
       {requete.length === 0 ? (
-        <h2>Aucune requete</h2>
+        <h2>{t("requete.vide")}</h2>
       ) : (
         <table className="fadeIn2">
           <thead>
             <tr>
               <th>Id</th>
-              <th>Message</th>
-              <th>Destination</th>
-              <th>Date d'envoye</th>
-              <th>Etat</th>
-              <th>Action</th>
+              <th>{t("requete.inp1")}</th>
+              <th>{t("requete.inp2")}</th>
+              <th>{t("requete.aff3")}</th>
+              <th>{t("requete.aff2")}</th>
+              <th>{t("requete.aff4")}</th>
             </tr>
           </thead>
           <tbody>

@@ -1,11 +1,63 @@
 {
-    "auth":{
-        "title":"Bienvenue sur <span>CarryBot</span>",
-        "description":"CarryBot est un projet académique développé par des étudiants de l'Institut Supérieur Polytechnique de Madagascar, filièreElectronique, Systèmes Informatiques et Intelligence Artificielle<span className={s.filiere}> (ESIIA3A)</span>. <br /> Notre objectif: concevoir une solution intelligente et innovante pour automatiseret simplifier le transport d’objets grâce à la robotique."
+  "auth": {
+    "title": "Bienvenue sur <span>CarryBot</span>",
+    "description": "CarryBot est un projet académique développé par des étudiants de l'Institut Supérieur Polytechnique de Madagascar, filière Electronique, Systèmes Informatiques et Intelligence Artificielle <0> (ESIIA3A)</0>. <br /> Notre objectif est de concevoir une solution intelligente et innovante pour automatiser et simplifier le transport d’objets grâce à la robotique."
+  },
+  "login": {
+    "title": "Connectez-vous et laissez <span>CarryBot</span> vous aider",
+    "submit": "Connexion",
+    "link": "Pas encore de compte ? <0>S'inscrire</0>"
+  },
+  "signUp": {
+    "title": "Rejoignez <0>CarryBot</0> et découvrez la livraison intelligente",
+    "submit":"Inscription",
+    "link":"Vous avez déjà un compte ?<0>Se connecter</0>"
+  },
+  "acceuil":{
+    "name":"CarryBot",
+    "title":"\" Le Robot de livraison intelligent , autonome et précis. \"",
+    "link":"Faire une requete",
+    "subTitle1":"Comment ça marche",
+    "1":"Le client commande ",
+    "stape1":"Le client choisit un produit et indique son emplacement",
+    "2":"L'administrateur valide",
+    "stape2":"L'administrateur reçoit la commande et prépare le robot.",
+    "3":"CarryBot agit ",
+    "stape3":"Le robot se déplace de manière autonome jusqu'à la destination.",
+    "4":"Livraison réussie ",
+    "stape4":"L'objet est livré au bon endroit en toute sécurité.",
+    "subTitle2":"A propos",
+    "descriptionISPM":"L’Institut Supérieur Polytechnique de Madagascar est une grandeécole d’ingénieurs reconnue pour sa formation axée sur lapratique, l’innovation et la recherche. Située à Antsobolo,Antananarivo, l’ <0>ISPM</0> forme chaque année desétudiants passionnés dans divers domaines tels quel’informatique, la finance, la comptabilité, le tourisme , legénie civil ou encore l’agro-industrie. Grâce à son approchebasée sur les projets et l’entrepreneuriat technologique, l’<1> ISPM </1>encourage ses étudiants à concevoir des solutions concrètes pourrépondre aux besoins de la société malgache.<2>En savoir plus</2>",
+    "descriptionCarryBot":"Le projet <0>CarryBot</0> s’inscrit dans cette vision,illustrant la créativité et le savoir-faire des étudiants de lafilière ESIIA <1>(Électronique, Systèmes Informatiques et Intelligence Artificielle)</1>. Ce projet académique vise à concevoir une solutionintelligente et automatisée pour le transport d’objets,combinant robotique et intelligence artificielle. Il reflète nonseulement la maîtrise technique des étudiants, mais aussi leurcapacité à imaginer des applications concrètes et innovantes,alliant technologie et praticité.",
+    "subTitle3":"Avantages",
+    "av1":"Livraison rapide et autonome.",
+    "av2":"Evite automatiquement les obstacles.",
+    "av3":"Navigation précise à l'aide des capteurs.",
+    "av4":"Projet eco-respinsable et éducatif (ISPM).",
+    "av5":"Commande simple via interface web."
     },
-    "login":{
-        "title":"Connectez-vous et laissez <span>CarryBot</span> vous aider",
-        "submit":"Connexion",
-        "link":"Pas encore de compte ? <0>S'inscrire</0>"
-    }
+    "requete":{
+        "title1":"Tableau de bord",
+        "card1":"Requete(s) En attente",
+        "card2":"Requete(s) Confirmé",
+        "card3":"Requete(s) Totale",
+        "title2":"Faire une nouvelle requete",
+        "form":"Formulaire",
+        "inp1":"Objet",
+        "inp2":"Destination",
+        "btn1":"Envoyer",
+        "aff1":"Requete en cours",
+        "aff2":"Etat",
+        "aff3":"Date d'envoye",
+        "aff4":"Action",
+        "btn2":"Terminer",
+        "title3":"Historique",
+        "vide":"Aucune requete"
+    },
+    "navbar":{
+        "link1":"Accueil",
+        "link2":"Requete",
+        "btn":"Deconnexion"
+    },
+    "footer":"Tous droits réservés."
 }

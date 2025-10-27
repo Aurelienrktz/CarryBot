@@ -20,7 +20,6 @@ import i18next from "./layout/translation";
 import { useTranslation } from "react-i18next";
 import { Trans } from "react-i18next";
 
-
 function App() {
   Animation();
   const [isAuthentificated, setIsAuthentificated] = useState(false);
@@ -67,16 +66,8 @@ function App() {
               />
             }
           >
-            {/* <Route path="/" element={<PrivateRoutes><Acceuil /></PrivateRoutes>} />
-            <Route path="/requete"element={<PrivateRoutes><Requete /></PrivateRoutes>}/> */}
-            <Route
-              path="/"
-              element={<Acceuil changeLanguage={changeLanguage} t={t} />}
-            />
-            <Route
-              path="/requete"
-              element={<Requete changeLanguage={changeLanguage} t={t} />}
-            />
+            <Route path="/" element={<PrivateRoutes><Acceuil /></PrivateRoutes>} />
+            <Route path="/requete"element={<PrivateRoutes><Requete /></PrivateRoutes>}/>
           </Route>
         </Routes>
       </div>

@@ -1,11 +1,63 @@
 {
   "auth": {
     "title": "Welcome to <span>CarryBot</span>",
-    "description": "CarryBot is an academic project developed by students of the Institut Supérieur Polytechnique de Madagascar, in the Electronics, Computer Systems and Artificial Intelligence department<span className={s.filiere}> (ESIIA3A)</span>. <br /> Our goal is to design an intelligent and innovative solution to automate and simplify object transport through robotics."
+    "description": "CarryBot is an academic project developed by students of the Institut Supérieur Polytechnique de Madagascar, in the Electronics, Computer Systems and Artificial Intelligence department <0> (ESIIA3A)</0>. <br /> Our goal is to design an intelligent and innovative solution to automate and simplify object transport through robotics."
   },
   "login": {
     "title": "Log in and let <span>CarryBot</span> assist you",
     "submit": "Login",
     "link": "Don't have an account yet? <0>Sign up</0>"
-  }
+  },
+  "signUp": {
+    "title": "Join <0>CarryBot</0> and discover smart delivery",
+    "submit": "Sign Up",
+    "link": "Already have an account? <0>Log in</0>"
+  },
+  "acceuil": {
+    "name": "CarryBot",
+    "title": "\" The intelligent, autonomous, and precise delivery robot. \"",
+    "link": "Make a request",
+    "subTitle1": "How it works",
+    "1": "The customer orders",
+    "stape1": "The customer selects a product and provides their location.",
+    "2": "The administrator validates",
+    "stape2": "The administrator receives the order and prepares the robot.",
+    "3": "CarryBot takes action",
+    "stape3": "The robot moves autonomously to the destination.",
+    "4": "Successful delivery",
+    "stape4": "The item is delivered safely to the correct location.",
+    "subTitle2": "About",
+    "descriptionISPM": "The <0>Institut Supérieur Polytechnique de Madagascar (ISPM)</0> is a prestigious engineering school known for its focus on practice, innovation, and research. Located in Antsobolo, Antananarivo, <1>ISPM</1> trains passionate students every year in fields such as computer science, finance, accounting, tourism, civil engineering, and agro-industry. Through its project-based approach and focus on technological entrepreneurship, <1>ISPM</1> encourages students to design concrete solutions that meet the needs of Malagasy society. <2>Learn more</2>",
+    "descriptionCarryBot": "The <0>CarryBot</0> project reflects this vision, showcasing the creativity and expertise of students from the ESIIA department <1>(Electronics, Computer Systems, and Artificial Intelligence)</1>. This academic project aims to design an intelligent and automated solution for transporting objects, combining robotics and artificial intelligence. It demonstrates not only the students’ technical mastery but also their ability to create practical and innovative applications that merge technology with usability.",
+    "subTitle3": "Advantages",
+    "av1": "Fast and autonomous delivery.",
+    "av2": "Automatically avoids obstacles.",
+    "av3": "Accurate navigation using sensors.",
+    "av4": "Eco-friendly and educational project (ISPM).",
+    "av5": "Simple ordering through a web interface."
+  },
+  "requete": {
+    "title1": "Dashboard",
+    "card1": "Pending request(s)",
+    "card2": "Confirmed request(s)",
+    "card3": "Total request(s)",
+    "title2": "Create a new request",
+    "form": "Form",
+    "inp1": "Object",
+    "inp2": "Destination",
+    "btn1": "Send",
+    "aff1": "Ongoing request",
+    "aff2": "Status",
+    "aff3": "Date sent",
+    "aff4": "Action",
+    "btn2": "Finish",
+    "title3": "History",
+    "vide": "No request"
+  },
+  "navbar": {
+    "link1": "Home",
+    "link2": "Request",
+    "btn": "Logout"
+  },
+  "footer":"All rights reserved."
 }
