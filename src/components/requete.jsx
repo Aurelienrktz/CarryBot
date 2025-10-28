@@ -49,8 +49,9 @@ const Requete = ({t}) => {
   useEffect(() => {
     fetchRequetes();
     const token = localStorage.getItem("access_token");
-    const decoded = jwtDecode(token);
-    const userId = decoded.user_id;
+    // const decoded = jwtDecode(token);
+    // const userId = decoded.user_id;
+    const userId = 5;
 
     const ws = new WebSocket(`ws://${ip}:8000/ws/requetes/`);
 
@@ -89,7 +90,6 @@ const Requete = ({t}) => {
             );
             break;
           default:
-          //console.log("Événement WS inconnu :", event);
         }
       }
     };
@@ -331,15 +331,18 @@ const Requete = ({t}) => {
                 <tr
                   key={index}
                   style={{
-                    backgroundColor: value.etat == "confirme" && "#009739",
-                    color: value.etat == "arriver" && "white",
+                    backgroundColor: value.etat === "confirme" && "#009739",
+                    color: value.etat ==="arriver" && "white",
                   }}
                 >
                   <td>{value.id}</td>
                   <td>{value.message}</td>
                   <td>{rowColToIndex(value.destination)}</td>
                   <td>{giveDate(value.date)}</td>
-                  <td>{value.etat}</td>
+                  <td>{value.etat==="en_attente"?t("requete.case1")
+                  :value.etat==="en_cours"?t("requete.case2")
+                  :value.etat==="arriver"?t("requete.case3")
+                  :t("requete.case4")}</td>
                   {(value.etat === "en_attente" ||
                     value.etat === "confirme") && (
                     <td>

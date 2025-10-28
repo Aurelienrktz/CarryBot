@@ -6,12 +6,19 @@
   "login": {
     "title": "Connectez-vous et laissez <span>CarryBot</span> vous aider",
     "submit": "Connexion",
-    "link": "Pas encore de compte ? <0>S'inscrire</0>"
+    "link": "Pas encore de compte ? <0>S'inscrire</0>",
+    "inp1": "Email",
+    "inp2":"Mot de passe"
+    
   },
   "signUp": {
     "title": "Rejoignez <0>CarryBot</0> et découvrez la livraison intelligente",
-    "submit":"Inscription",
-    "link":"Vous avez déjà un compte ?<0>Se connecter</0>"
+    "submit": "Inscription",
+    "link": "Vous avez déjà un compte ?<0>Se connecter</0>",
+    "inp1": "Email",
+    "inp2":"Nom",
+    "inp3":"Prenom",
+    "inp4": "Mot de passe"
   },
   "acceuil":{
     "name":"CarryBot",
@@ -52,7 +59,11 @@
         "aff4":"Action",
         "btn2":"Terminer",
         "title3":"Historique",
-        "vide":"Aucune requete"
+        "vide":"Aucune requete",
+        "case1":"En attente",
+        "case2":"En cours",
+        "case3":"Livré",
+        "case4":"Terminé"
     },
     "navbar":{
         "link1":"Accueil",

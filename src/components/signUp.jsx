@@ -55,7 +55,7 @@ const SignUp = ({t}) => {
         <label htmlFor="email">
           <input
             type="text"
-            placeholder="Email"
+            placeholder={t("signUp.inp1")}
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -65,7 +65,7 @@ const SignUp = ({t}) => {
         <label htmlFor="nom">
           <input
             type="text"
-            placeholder="Nom"
+            placeholder={t("signUp.inp2")}
             id="nom"
             value={nom}
             onChange={(e) => setNom(e.target.value)}
@@ -75,7 +75,7 @@ const SignUp = ({t}) => {
         <label htmlFor="prenom">
           <input
             type="text"
-            placeholder="Prénom"
+            placeholder={t("signUp.inp3")}
             id="prenom"
             value={prenom}
             onChange={(e) => setPrenom(e.target.value)}
@@ -85,7 +85,7 @@ const SignUp = ({t}) => {
         <label htmlFor="mdp" style={{ position: "relative" }}>
           <input
             type={visible ? "text" : "password"}
-            placeholder="Mot de passe"
+            placeholder={t("signUp.inp4")}
             id="mdp"
             value={mdp}
             onChange={(e) => setMdp(e.target.value)}

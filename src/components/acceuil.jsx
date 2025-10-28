@@ -104,7 +104,7 @@ const Acceuil = ({t}) => {
                   components={[<span />, <span className={s.filiere} />]}
                 />
               </p>
-              <img src={imgCarrybot[index]} alt="image robot carryBot" />
+              <img src="/image/561777318_24596868960005049_1934023389779969411_n.gif" alt="image robot carryBot" />
             </div>
           </div>
         </div>

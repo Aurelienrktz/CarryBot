@@ -6,12 +6,18 @@
   "login": {
     "title": "Log in and let <span>CarryBot</span> assist you",
     "submit": "Login",
-    "link": "Don't have an account yet? <0>Sign up</0>"
+    "link": "Don't have an account yet? <0>Sign up</0>",
+    "inp1": "Email",
+    "inp2": "Password"
   },
   "signUp": {
     "title": "Join <0>CarryBot</0> and discover smart delivery",
     "submit": "Sign Up",
-    "link": "Already have an account? <0>Log in</0>"
+    "link": "Already have an account? <0>Log in</0>",
+    "inp1": "Email",
+    "inp2": "Name",
+    "inp3": "Firstname",
+    "inp4": "Password"
   },
   "acceuil": {
     "name": "CarryBot",
@@ -52,7 +58,11 @@
     "aff4": "Action",
     "btn2": "Finish",
     "title3": "History",
-    "vide": "No request"
+    "vide": "No request",
+    "case1": "Pending",
+    "case2": "In progress",
+    "case3": "Delivered",
+    "case4": "Completed"
   },
   "navbar": {
     "link1": "Home",

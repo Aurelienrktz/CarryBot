@@ -48,7 +48,6 @@ const Login = ({ setIsAuthentificated,t }) => {
 
   return (
     <div className={`${s.container} fadeIn2`}>
-
       <img src="/image/Mobile login-amico.png" alt="icon user" />
       <form className={s.formulaire} onSubmit={handleLogin}>
         <h1 dangerouslySetInnerHTML={{ __html: t("login.title") }} />
@@ -57,7 +56,7 @@ const Login = ({ setIsAuthentificated,t }) => {
         <label htmlFor="email">
           <input
             type="text"
-            placeholder="Email"
+            placeholder={t("login.inp1")}
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -67,7 +66,7 @@ const Login = ({ setIsAuthentificated,t }) => {
         <label htmlFor="mdp" style={{ position: "relative" }}>
           <input
             type={visible ? "text" : "password"}
-            placeholder="Mot de passe"
+            placeholder={t("login.inp2")}
             id="mdp"
             value={mdp}
             onChange={(e) => setMdp(e.target.value)}
@@ -89,8 +88,7 @@ const Login = ({ setIsAuthentificated,t }) => {
         </label>
         <button type="submit">{t("login.submit")}</button>
       </form>
-      <Trans i18nKey="login.link" components={[<Link to="/signUp" />]}>
-      </Trans>
+      <Trans i18nKey="login.link" components={[<Link to="/signUp" />]}></Trans>
     </div>
   );
 };

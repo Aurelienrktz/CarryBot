@@ -6,12 +6,18 @@
   "login": {
     "title": "Midira ary avelao <span>CarryBot</span> hanampy anao",
     "submit": "Hiditra",
-    "link": "Tsy mbola manana kaonty ? <0>Hisoratra anarana</0>"
+    "link": "Tsy mbola manana kaonty ? <0>Hisoratra anarana</0>",
+    "inp1": "Adiresy mailaka",
+    "inp2": "Teny miafina"
   },
   "signUp": {
     "title": "Midira ao amin'ny <0>CarryBot</0> ary zahao ny fanaterana manan-tsaina",
     "submit": "Fisoratana anarana",
-    "link": "Efa manana kaonty ve ianao ? <0>Hiditra</0>"
+    "link": "Efa manana kaonty ve ianao ? <0>Hiditra</0>",
+    "inp1": "Adiresy mailaka",
+    "inp2":"Anarana",
+    "inp3":"Fanampiny",
+    "inp4": "Teny miafina"
   },
   "acceuil": {
     "name": "CarryBot",
@@ -52,7 +58,11 @@
     "aff4": "Hetsika",
     "btn2": "Vita",
     "title3": "Tantara",
-    "vide": "Tsisy fangatahana"
+    "vide": "Tsisy fangatahana",
+    "case1": "Miandry",
+    "case2": "Eo am-panaovana",
+    "case3": "Nalefa",
+    "case4": "Vita"
   },
   "navbar": {
     "link1": "Fandraisana",

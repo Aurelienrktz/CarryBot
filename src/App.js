@@ -66,8 +66,22 @@ function App() {
               />
             }
           >
-            <Route path="/" element={<PrivateRoutes><Acceuil /></PrivateRoutes>} />
-            <Route path="/requete"element={<PrivateRoutes><Requete /></PrivateRoutes>}/>
+            <Route
+              path="/"
+              element={
+                <PrivateRoutes>
+                  <Acceuil changeLanguage={changeLanguage} t={t} />
+                </PrivateRoutes>
+              }
+            />
+            <Route
+              path="/requete"
+              element={
+                <PrivateRoutes>
+                  <Requete changeLanguage={changeLanguage} t={t} />
+                </PrivateRoutes>
+              }
+            />
           </Route>
         </Routes>
       </div>
